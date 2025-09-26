@@ -1,0 +1,11 @@
+<button
+  class="tool-button"
+  [class.active]="active"
+  [title]="tool.description"
+  (click)="onClick()"
+>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <path [attr.d]="tool.icon"/>
+  </svg>
+  <span class="tool-name">{{ tool.name }}</span>
+</button>

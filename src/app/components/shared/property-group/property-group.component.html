@@ -1,0 +1,30 @@
+<div class="property-group">
+  <div
+    class="group-header"
+    (click)="toggleGroup()"
+    [class.expanded]="group().expanded"
+  >
+    <svg
+      class="expand-icon"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+    </svg>
+    <span class="group-title">{{ group().name }}</span>
+  </div>
+
+  @if (group().expanded) {
+    <div class="group-content">
+      @for (property of group().properties; track property.key) {
+        <app-property-input
+          [property]="property"
+          (propertyChange)="onPropertyChange($event)"
+        />
+      }
+      <ng-content></ng-content>
+    </div>
+  }
+</div>

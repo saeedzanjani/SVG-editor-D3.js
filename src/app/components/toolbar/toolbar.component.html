@@ -1,0 +1,30 @@
+<div class="toolbar">
+  <!-- Tool Palette -->
+  <div class="tool-palette">
+    @for (tool of tools; track tool.id) {
+      <app-tool-button
+        [tool]="tool"
+        [active]="isToolActive(tool.id)"
+        (toolClick)="onToolClick($event)"
+      ></app-tool-button>
+    }
+  </div>
+
+  <!-- Save Button -->
+  <app-save-controls
+    [hasContent]="hasSvgContent()"
+    (save)="onSaveSvg()">
+  </app-save-controls>
+
+  <!-- Preview Mode Controls -->
+  <app-preview-controls
+    [isPreviewMode]="isPreviewMode()"
+    (play)="onPlayAnimation()"
+    (pause)="onPauseAnimation()"
+    (stop)="onStopAnimation()">
+  </app-preview-controls>
+
+  <!-- Status Bar -->
+  <app-status-bar [statusItems]="statusItems()">
+  </app-status-bar>
+</div>

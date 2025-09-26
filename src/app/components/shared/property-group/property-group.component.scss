@@ -1,0 +1,62 @@
+.property-group {
+  border-bottom: 1px solid #f1f3f4;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    user-select: none;
+
+    &:hover {
+      background: #f8f9fa;
+    }
+
+    .expand-icon {
+      transition: transform 0.2s ease;
+      color: #6c757d;
+    }
+
+    &.expanded .expand-icon {
+      transform: rotate(90deg);
+    }
+
+    .group-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #495057;
+      text-transform: capitalize;
+    }
+  }
+
+  .group-content {
+    padding: 0 20px 16px 20px;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .property-group {
+    border-bottom-color: #444;
+
+    .group-header {
+      .expand-icon {
+        color: #999;
+      }
+
+      .group-title {
+        color: #ccc;
+      }
+
+      &:hover {
+        background: #4d4d4d;
+      }
+    }
+  }
+}

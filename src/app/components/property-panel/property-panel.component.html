@@ -1,0 +1,60 @@
+<div class="property-panel">
+  <div class="panel-header">
+    <h3>Properties</h3>
+    <div class="header-actions">
+      <button class="action-button" title="Reset Properties">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="panel-content">
+    @if (selectedElements().length === 0) {
+      <div class="no-selection">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+        </svg>
+        <p>No element selected</p>
+        <span>Select an element to view and edit its properties</span>
+      </div>
+    } @else {
+      <!-- Element Summary -->
+      <div class="element-summary">
+        <div class="element-info">
+          <div class="element-type">{{ getElementTypeLabel(selectedElements()[0]) }}</div>
+          <div class="element-details">{{ getElementSummary(selectedElements()[0]) }}</div>
+        </div>
+        @if (selectedElements().length > 1) {
+          <div class="multi-selection">
+            <span class="selection-count">+{{ selectedElements().length - 1 }} more</span>
+          </div>
+        }
+      </div>
+
+      <!-- Property Groups -->
+      @for (group of propertyGroups(); track group.name) {
+        <app-property-group
+          [group]="group"
+          (groupToggle)="toggleGroup($event)"
+          (propertyChange)="onPropertyChange($event.property, $event.value)"
+        >
+          @if (group.name === 'animation' && isGroupExpanded('animation')) {
+            <app-animation-controls
+              [animationEnabled]="animationProperties()['enabled']"
+              [hasAnimation]="hasAnimationForSelectedElement()"
+              [isAnimationRunning]="isAnimationRunningForSelectedElement()"
+              (addAnimation)="onAddAnimation()"
+              (pauseAnimation)="onPauseAnimation()"
+              (resumeAnimation)="onResumeAnimation()"
+              (stopAnimation)="onStopAnimation()"
+              (previewAnimation)="onPreviewAnimation()"
+              (removeAnimation)="onRemoveAnimation()"
+            />
+          }
+        </app-property-group>
+      }
+    }
+  </div>
+</div>

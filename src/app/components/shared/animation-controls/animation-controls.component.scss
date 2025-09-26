@@ -1,0 +1,89 @@
+.animation-controls {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e9ecef;
+
+  .control-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    .control-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &.primary {
+        background: #007acc;
+        border-color: #007acc;
+        color: white;
+
+        &:hover:not(:disabled) {
+          background: #005a9e;
+          border-color: #005a9e;
+        }
+      }
+
+      &.secondary {
+        background: white;
+        color: #495057;
+
+        &:hover:not(:disabled) {
+          background: #f8f9fa;
+          border-color: #adb5bd;
+        }
+      }
+
+      &.danger {
+        background: #dc3545;
+        border-color: #dc3545;
+        color: white;
+
+        &:hover:not(:disabled) {
+          background: #c82333;
+          border-color: #bd2130;
+        }
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .animation-controls {
+    border-top-color: #444;
+
+    .control-buttons {
+      .control-button {
+        &.secondary {
+          background: #3d3d3d;
+          border-color: #555;
+          color: #ccc;
+
+          &:hover:not(:disabled) {
+            background: #4d4d4d;
+            border-color: #666;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+<app-dialog
+  [visible]="visible"
+  title="Customize Label"
+  size="medium"
+  (close)="onClose()"
+>
+  <div class="dialog-content" *ngIf="element">
+    <div class="element-info">
+      <h4>{{ element.type | titlecase }} Element</h4>
+      <p>ID: {{ element.id }}</p>
+    </div>
+
+    <div class="customization-form">
+      <div class="form-group">
+        <label for="textContent">Text Content:</label>
+        <input
+          id="textContent"
+          type="text"
+          [value]="customization().text"
+          (input)="onTextChange($any($event.target).value)"
+          class="form-input"
+          placeholder="Enter label text"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="textColor">Text Color:</label>
+        <app-color-input
+          [value]="customization().color"
+          (colorChange)="onColorChange($event)"
+        ></app-color-input>
+      </div>
+
+      <div class="form-group">
+        <label for="fontSize">Font Size:</label>
+        <input
+          id="fontSize"
+          type="number"
+          [value]="customization().fontSize"
+          (input)="onFontSizeChange(+$any($event.target).value)"
+          class="form-input"
+          [min]="TEXT_CONSTANTS.FONT_SIZE.MIN"
+          [max]="TEXT_CONSTANTS.FONT_SIZE.MAX"
+          [step]="TEXT_CONSTANTS.FONT_SIZE.STEP"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="fontFamily">Font Family:</label>
+        <app-select
+          [options]="fontFamilyOptions"
+          [value]="customization().fontFamily"
+          (valueChange)="onFontFamilyChange($event)"
+        ></app-select>
+      </div>
+
+      <div class="form-group">
+        <label for="textAnchor">Text Alignment:</label>
+        <app-select
+          [options]="textAnchorOptions"
+          [value]="customization().textAnchor"
+          (valueChange)="onTextAnchorChange($event)"
+        ></app-select>
+      </div>
+    </div>
+
+    <div class="preview-section">
+      <h4>Preview:</h4>
+      <div class="preview-container">
+        <svg
+          [attr.width]="TEXT_CONSTANTS.PREVIEW.SVG_WIDTH"
+          [attr.height]="TEXT_CONSTANTS.PREVIEW.SVG_HEIGHT"
+          class="preview-svg"
+        >
+          <text
+            [attr.x]="previewTextX()"
+            [attr.y]="TEXT_CONSTANTS.PREVIEW.TEXT_Y"
+            [attr.fill]="customization().color"
+            [attr.font-size]="customization().fontSize"
+            [attr.font-family]="customization().fontFamily"
+            [attr.text-anchor]="customization().textAnchor"
+          >
+            {{ customization().text || 'Preview Text' }}
+          </text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div slot="actions">
+    <app-button type="secondary" (click)="onClose()">Cancel</app-button>
+    <app-button type="primary" (click)="onSave()">Save Changes</app-button>
+  </div>
+</app-dialog>

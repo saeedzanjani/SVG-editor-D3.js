@@ -1,0 +1,37 @@
+.selection-handles {
+  pointer-events: none;
+}
+
+.element-handles {
+  pointer-events: all;
+}
+
+.selection-outline {
+  pointer-events: none;
+}
+
+.resize-handle {
+  cursor: pointer;
+  pointer-events: all;
+
+  &:hover {
+    fill: #005a9e;
+    stroke: #ffffff;
+  }
+
+  &[data-handle="nw"], &[data-handle="se"] {
+    cursor: nw-resize;
+  }
+
+  &[data-handle="ne"], &[data-handle="sw"] {
+    cursor: ne-resize;
+  }
+
+  &[data-handle="n"], &[data-handle="s"] {
+    cursor: ns-resize;
+  }
+
+  &[data-handle="e"], &[data-handle="w"] {
+    cursor: ew-resize;
+  }
+}

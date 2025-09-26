@@ -1,0 +1,41 @@
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  font-size: 12px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &.status-normal {
+    color: #495057;
+  }
+
+  &.status-preview {
+    color: #007acc;
+    font-weight: 500;
+  }
+
+  &.status-warning {
+    color: #ffc107;
+  }
+
+  &.status-error {
+    color: #dc3545;
+  }
+}
+
+.status-label {
+  font-weight: 500;
+  color: #6c757d;
+}
+
+.status-value {
+  font-weight: 400;
+}

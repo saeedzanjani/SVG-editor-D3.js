@@ -1,0 +1,109 @@
+.tool-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 60px;
+  position: relative;
+
+  &:hover {
+    background: #e9ecef;
+    border-color: #dee2e6;
+  }
+
+  &.active {
+    background: #007acc;
+    border-color: #007acc;
+    color: white;
+
+    .tool-name {
+      color: white;
+    }
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: #495057;
+    transition: color 0.2s ease;
+  }
+
+  .tool-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: #6c757d;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  &.active svg {
+    color: white;
+  }
+}
+
+// Responsive design
+@media (max-width: 1366px) {
+  .tool-button {
+    min-width: 50px;
+    padding: 6px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .tool-name {
+      font-size: 10px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .tool-button {
+    min-width: 45px;
+    padding: 4px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .tool-name {
+      font-size: 9px;
+    }
+  }
+}
+
+// Dark theme support
+@media (prefers-color-scheme: dark) {
+  .tool-button {
+    svg {
+      color: #ccc;
+    }
+
+    .tool-name {
+      color: #999;
+    }
+
+    &:hover {
+      background: #4d4d4d;
+      border-color: #666;
+    }
+
+    &.active {
+      background: #007acc;
+      border-color: #007acc;
+
+      svg,
+      .tool-name {
+        color: white;
+      }
+    }
+  }
+}

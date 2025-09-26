@@ -1,0 +1,13 @@
+<select
+  [value]="selectedValue()"
+  [disabled]="disabled()"
+  (change)="onSelectionChange($any($event.target).value)"
+  class="app-select"
+>
+  @if (placeholder()) {
+    <option value="" disabled>{{ placeholder() }}</option>
+  }
+  @for (option of options(); track option.value) {
+    <option [value]="option.value">{{ option.label }}</option>
+  }
+</select>

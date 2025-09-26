@@ -1,0 +1,169 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #f5f5f5;
+  color: #212529;
+  line-height: 1.5;
+}
+
+// Global utility classes
+
+// Focus styles
+*:focus {
+  outline: 2px solid #007acc;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Scrollbar styles
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+// Dark theme scrollbar
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: #3d3d3d;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #666;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #777;
+  }
+}
+
+// Responsive design for small laptop screens
+@media (max-width: 1366px) {
+  body {
+    font-size: 14px;
+  }
+
+  // Adjust toolbar for smaller screens
+  .toolbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tool-palette {
+    flex-wrap: wrap;
+  }
+
+  .tool-button {
+    min-width: 40px;
+    padding: 6px;
+  }
+
+  .tool-name {
+    display: none; // Hide tool names on small screens
+  }
+
+  // Adjust property panel
+  .property-panel {
+    min-width: 250px;
+  }
+
+  // Adjust canvas controls
+  .canvas-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .zoom-controls {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1024px) {
+  // Further adjustments for smaller screens
+  .toolbar {
+    padding: 8px;
+  }
+
+  .menu-bar {
+    flex-wrap: wrap;
+  }
+
+  .tool-palette {
+    justify-content: center;
+  }
+
+  .property-panel {
+    min-width: 200px;
+  }
+
+  // Stack layout for very small screens
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .canvas-container {
+    height: 60vh;
+  }
+}
+
+@media (max-width: 768px) {
+  // Mobile-like adjustments
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .menu-bar {
+    justify-content: center;
+  }
+
+  .tool-palette {
+    justify-content: space-around;
+  }
+
+  .property-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40vh;
+    z-index: 100;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .property-panel.open {
+    transform: translateY(0);
+  }
+}

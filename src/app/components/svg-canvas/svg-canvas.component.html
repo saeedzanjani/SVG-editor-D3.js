@@ -1,0 +1,59 @@
+<div class="canvas-container" #canvasContainer>
+  <app-canvas-controls
+    (zoomIn)="zoomIn()"
+    (zoomOut)="zoomOut()"
+    (resetZoom)="resetZoom()">
+  </app-canvas-controls>
+
+  <div class="canvas-wrapper" (mousedown)="eventHandlers.onMouseDown($event)" (contextmenu)="eventHandlers.onRightClick($event)" (click)="eventHandlers.onCanvasClick($event)">
+
+    <!-- SVG Canvas for rendering -->
+    <svg
+      #svgCanvas
+      class="svg-canvas"
+      [attr.width]="canvas().width"
+      [attr.height]="canvas().height"
+      [attr.viewBox]="canvas().viewBox"
+      [style.transform]="canvasTransform()"
+    >
+
+      <!-- SVG Elements will be rendered by D3.js service -->
+
+      <!-- Selection Handles -->
+      <app-selection-handles
+        [selectedElementIds]="selectedElementIds()"
+        [getSelectedElement]="selectionUtils.getSelectedElement.bind(selectionUtils)"
+        [getResizeHandles]="selectionUtils.getResizeHandles.bind(selectionUtils)">
+      </app-selection-handles>
+
+      <!-- Drag Selection Rectangle -->
+      <app-drag-selection
+        [isDragging]="isDraggingSelection()"
+        [activeTool]="activeTool()"
+        [selectionRect]="selectionRect()">
+      </app-drag-selection>
+    </svg>
+
+    <!-- Context Menu -->
+    <app-context-menu
+      [visible]="showContextMenu()"
+      [position]="contextMenuPosition()"
+      [items]="contextMenuItems()"
+      (itemClick)="onContextMenuItemClick($event)">
+    </app-context-menu>
+  </div>
+
+  <!-- Mouse Position Indicator -->
+  <app-mouse-position
+    [showMousePosition]="showMousePosition()"
+    [mousePosition]="mousePosition()">
+  </app-mouse-position>
+
+  <!-- Label Customization Dialog -->
+  <app-label-customization-dialog
+    [element]="selectedElementForDialog()"
+    [visible]="showLabelCustomizationDialog()"
+    (close)="dialogManager.closeLabelCustomizationDialog()"
+    (save)="dialogManager.handleLabelCustomizationSave($event)"
+  ></app-label-customization-dialog>
+</div>

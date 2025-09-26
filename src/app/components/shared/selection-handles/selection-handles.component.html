@@ -1,0 +1,35 @@
+<g class="selection-handles">
+  @for (elementId of selectedElementIds(); track elementId) {
+    @if (getElement(elementId); as element) {
+      <g class="element-handles" [attr.data-element-id]="elementId">
+        <!-- Selection rectangle -->
+        <rect
+          [attr.x]="element.bounds?.x || 0"
+          [attr.y]="element.bounds?.y || 0"
+          [attr.width]="element.bounds?.width || 0"
+          [attr.height]="element.bounds?.height || 0"
+          fill="none"
+          stroke="#007acc"
+          stroke-width="2"
+          stroke-dasharray="5,5"
+          class="selection-outline"
+        />
+
+        <!-- Resize handles -->
+        @for (handle of getHandles(element); track handle.id) {
+          <rect
+            [attr.x]="handle.x - 4"
+            [attr.y]="handle.y - 4"
+            width="8"
+            height="8"
+            fill="#007acc"
+            stroke="#ffffff"
+            stroke-width="1"
+            class="resize-handle"
+            [attr.data-handle]="handle.type"
+          />
+        }
+      </g>
+    }
+  }
+</g>

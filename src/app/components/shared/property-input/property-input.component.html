@@ -1,0 +1,69 @@
+<div class="property-item">
+  <label class="property-label">{{ property().label }}</label>
+  <div class="property-control">
+    @switch (property().type) {
+      @case ('text') {
+        <input
+          type="text"
+          class="property-input"
+          [value]="property().value"
+          (input)="onInput($event)"
+        />
+      }
+      @case ('number') {
+        <input
+          type="number"
+          class="property-input"
+          [value]="property().value"
+          [min]="property().min"
+          [max]="property().max"
+          [step]="property().step"
+          (input)="onInput($event)"
+        />
+      }
+      @case ('color') {
+        <input
+          type="color"
+          class="property-color"
+          [value]="property().value"
+          (input)="onInput($event)"
+        />
+      }
+      @case ('select') {
+        <select
+          class="property-select"
+          [value]="property().value"
+          (change)="onInput($event)"
+        >
+          @for (option of property().options; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      }
+      @case ('boolean') {
+        <label class="property-checkbox">
+          <input
+            type="checkbox"
+            [checked]="property().value"
+            (change)="onInput($event)"
+          />
+          <span class="checkbox-slider"></span>
+        </label>
+      }
+      @case ('range') {
+        <div class="property-range">
+          <input
+            type="range"
+            class="range-slider"
+            [value]="property().value"
+            [min]="property().min"
+            [max]="property().max"
+            [step]="property().step"
+            (input)="onInput($event)"
+          />
+              <span class="range-value">{{ getRangeValue() }}%</span>
+        </div>
+      }
+    }
+  </div>
+</div>

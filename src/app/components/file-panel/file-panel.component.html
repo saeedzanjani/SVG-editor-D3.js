@@ -1,0 +1,57 @@
+<div class="file-panel">
+  <div class="panel-header">
+    <h3>SVG Templates</h3>
+    <div class="header-actions">
+      <label class="upload-button" title="Upload SVG File">
+        <input
+          type="file"
+          accept=".svg,image/svg+xml"
+          (change)="onFileSelect($event)"
+          style="display: none;"
+        />
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+        </svg>
+        Upload SVG
+      </label>
+    </div>
+  </div>
+
+  <div class="panel-content">
+    <!-- Upload Section -->
+    <div class="upload-section">
+      <app-upload-area
+        accept=".svg,image/svg+xml"
+        uploadText="Click to upload SVG file"
+        uploadHint="or drag and drop"
+        (fileUpload)="onFileUpload($event)"
+      ></app-upload-area>
+    </div>
+
+    <!-- Search Input -->
+    <div class="search-section">
+      <app-search-input
+        [value]="searchQuery()"
+        [placeholder]="'Search templates...'"
+        (valueChange)="onSearchChange($event)"
+      ></app-search-input>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="filter-section">
+      <app-category-filter
+        [categories]="categories"
+        [selectedCategory]="selectedCategory()"
+        (categoryChange)="onCategoryChange($event)"
+      ></app-category-filter>
+    </div>
+
+    <!-- Template Grid -->
+    <app-template-grid
+      [templates]="filteredTemplates()"
+      [selectedTemplateId]="selectedTemplate()"
+      (templateSelect)="onTemplateSelect($event)"
+      (templateDelete)="onTemplateDelete($event)"
+    ></app-template-grid>
+  </div>
+</div>

@@ -1,0 +1,151 @@
+.template-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+  position: relative;
+
+  &:hover {
+    border-color: #007acc;
+    box-shadow: 0 2px 8px rgba(0, 122, 204, 0.1);
+    transform: translateY(-1px);
+
+    .delete-button {
+      opacity: 1;
+    }
+  }
+
+  &.selected {
+    border-color: #007acc;
+    background: #f0f8ff;
+    box-shadow: 0 2px 8px rgba(0, 122, 204, 0.15);
+  }
+}
+
+.template-thumbnail {
+  height: 120px;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #e9ecef;
+
+  .template-preview {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.template-info {
+  padding: 12px;
+}
+
+.template-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 4px;
+}
+
+.template-description {
+  font-size: 12px;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+// Responsive design
+@media (max-width: 1366px) {
+  .template-thumbnail {
+    height: 100px;
+  }
+
+  .template-info {
+    padding: 10px;
+  }
+
+  .template-name {
+    font-size: 13px;
+  }
+
+  .template-description {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .template-thumbnail {
+    height: 80px;
+  }
+
+  .template-info {
+    padding: 8px;
+  }
+}
+
+// Dark theme support
+@media (prefers-color-scheme: dark) {
+  .template-item {
+    background: #3d3d3d;
+    border-color: #555;
+
+    &:hover {
+      border-color: #007acc;
+      background: #4d4d4d;
+    }
+
+    &.selected {
+      background: #1a3a5c;
+      border-color: #007acc;
+    }
+  }
+
+  .template-thumbnail {
+    background: #4d4d4d;
+    border-bottom-color: #555;
+  }
+
+  .template-name {
+    color: #fff;
+  }
+
+  .template-description {
+    color: #ccc;
+  }
+}
+
+.delete-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(220, 53, 69, 0.9);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.2s ease;
+  z-index: 10;
+
+  &:hover {
+    background: rgba(220, 53, 69, 1);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+}

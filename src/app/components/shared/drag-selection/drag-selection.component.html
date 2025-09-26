@@ -1,0 +1,13 @@
+@if (isDragging() && activeTool() === 'SELECT') {
+  <rect
+    class="selection-rectangle"
+    [attr.x]="selectionRect().x"
+    [attr.y]="selectionRect().y"
+    [attr.width]="selectionRect().width"
+    [attr.height]="selectionRect().height"
+    fill="rgba(0, 122, 204, 0.1)"
+    stroke="#007acc"
+    stroke-width="1"
+    stroke-dasharray="5,5"
+  />
+}

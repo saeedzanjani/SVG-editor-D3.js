@@ -1,0 +1,17 @@
+<div class="preview-controls" *ngIf="isPreviewMode()">
+  <button class="control-button" (click)="onPlay()" title="Play Animation">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
+    </svg>
+  </button>
+  <button class="control-button" (click)="onPause()" title="Pause Animation">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M14,19H18V5H14M6,19H10V5H6V19Z"/>
+    </svg>
+  </button>
+  <button class="control-button" (click)="onStop()" title="Stop Animation">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M6,6H18V18H6V6Z"/>
+    </svg>
+  </button>
+</div>

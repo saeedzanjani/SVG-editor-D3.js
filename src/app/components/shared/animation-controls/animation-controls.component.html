@@ -1,0 +1,64 @@
+<div class="animation-controls">
+  <div class="control-buttons">
+    <button
+      class="control-button primary"
+      (click)="onAddAnimation()"
+      [disabled]="!animationEnabled()"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
+      </svg>
+      Add Animation
+    </button>
+    <button
+      class="control-button secondary"
+      (click)="onPauseAnimation()"
+      [disabled]="!isAnimationRunning()"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M14,19H18V5H14M6,19H10V5H6V19Z"/>
+      </svg>
+      Pause
+    </button>
+    <button
+      class="control-button secondary"
+      (click)="onResumeAnimation()"
+      [disabled]="!hasAnimation() || isAnimationRunning()"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
+      </svg>
+      Resume
+    </button>
+    <button
+      class="control-button secondary"
+      (click)="onStopAnimation()"
+      [disabled]="!isAnimationRunning()"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6,6H18V18H6V6Z"/>
+      </svg>
+      Stop
+    </button>
+    <button
+      class="control-button secondary"
+      (click)="onPreviewAnimation()"
+      [disabled]="!animationEnabled()"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z"/>
+      </svg>
+      Preview
+    </button>
+    <button
+      class="control-button danger"
+      (click)="onRemoveAnimation()"
+      [disabled]="!hasAnimation()"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19V4Z"/>
+      </svg>
+      Remove
+    </button>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="status-bar">
+  @for (item of statusItems(); track $index) {
+    <div class="status-item" [class]="'status-' + (item.type || 'normal')">
+      @if (item.label) {
+        <span class="status-label">{{ item.label }}</span>
+      }
+      <span class="status-value">{{ item.value }}</span>
+    </div>
+  }
+</div>

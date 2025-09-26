@@ -1,0 +1,17 @@
+<div class="color-input-group">
+  <input
+    type="color"
+    [value]="color()"
+    [disabled]="disabled()"
+    (change)="onColorPickerChange($any($event.target).value)"
+    class="color-picker"
+  />
+  <input
+    type="text"
+    [value]="color()"
+    [disabled]="disabled()"
+    [placeholder]="placeholder()"
+    (input)="onTextInputChange($any($event.target).value)"
+    class="color-text-input"
+  />
+</div>

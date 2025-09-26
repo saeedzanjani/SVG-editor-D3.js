@@ -1,0 +1,15 @@
+<div class="category-filter">
+  <select
+    class="category-select"
+    [value]="selectedCategory"
+    [disabled]="disabled"
+    (change)="onCategoryChange($event)"
+  >
+    @if (placeholder) {
+      <option value="" disabled>{{ placeholder }}</option>
+    }
+    @for (category of categories; track category.id) {
+      <option [value]="category.id">{{ category.name }}</option>
+    }
+  </select>
+</div>
